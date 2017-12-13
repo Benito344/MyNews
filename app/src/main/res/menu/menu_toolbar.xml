@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="@string/toolbar_search"/>
+
+    <item
+        android:id="@+id/menu_notifs"
+        app:showAsAction="never"
+        android:title="@string/toolbar_notifications"/>
+
+    <item
+        android:id="@+id/menu_help"
+        app:showAsAction="never"
+        android:title="@string/toolbar_help"/>
+
+    <item
+        android:id="@+id/menu_about"
+        app:showAsAction="never"
+        android:title="@string/toolbar_about"/>
+
+</menu>
