@@ -5,4 +5,10 @@
     <string name="toolbar_help">Help</string>
     <string name="toolbar_about">About</string>
     <string name="edit_box_hint">Search query term</string>
+    <string name="cb_Arts">Arts</string>
+    <string name="cb_Business">Business</string>
+    <string name="cb_Entrepreneurs">Entrepreneurs</string>
+    <string name="cb_Politics">Politics</string>
+    <string name="cb_Sports">Sports</string>
+    <string name="cb_Travels">Travels</string>
 </resources>
