@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#15BDD5</color>
     <color name="colorPrimaryDark">#0C99AA</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFF</color>
     <color name="colorMoreToolbar">#FFF</color>
 
     <array name="colorPagesViewPager">

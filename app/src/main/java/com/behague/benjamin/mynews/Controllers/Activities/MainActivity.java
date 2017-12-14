@@ -1,11 +1,13 @@
 package com.behague.benjamin.mynews.Controllers.Activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.behague.benjamin.mynews.Adapter.PageAdapter;
 import com.behague.benjamin.mynews.R;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureToolbar(){
         //Get the toolbar view inside the activity layout
-        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //Sets the Toolbar
         setSupportActionBar(toolbar);
     }
@@ -46,4 +48,22 @@ public class MainActivity extends AppCompatActivity {
         // 3 - Design purpose. Tabs have the same width
         tabs.setTabMode(TabLayout.MODE_FIXED);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //3 - Handle actions on menu items
+        switch (item.getItemId()) {
+            case R.id.menu_search:
+                launchSearchActivity();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void launchSearchActivity(){
+        Intent myIntent = new Intent(MainActivity.this, SearchActivity.class);
+        this.startActivity(myIntent);
+    }
+
 }
