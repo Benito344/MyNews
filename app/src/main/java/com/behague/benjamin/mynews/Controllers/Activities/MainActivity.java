@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_search:
                 launchSearchActivity();
                 return true;
+
+            case R.id.menu_notifs:
+                launchNotifsActivity();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -66,4 +70,8 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
+    private void launchNotifsActivity(){
+        Intent myIntent = new Intent(MainActivity.this, NotificationActivity.class);
+        this.startActivity(myIntent);
+    }
 }

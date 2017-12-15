@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.behague.benjamin.mynews.Controllers.Activities.NotificationActivity">
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <include
+        layout="@layout/toolbar"
+        android:id= "@+id/toolbarSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <include
+        layout="@layout/editbox_search" />
+    <LinearLayout
+        android:id="@+id/linearLayout_Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_edit_box_sn"
+        android:layout_alignStart="@id/activity_edit_box_sn"
+        android:layout_alignEnd="@id/activity_edit_box_sn"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingEnd="10dp">
+
+            <include
+                layout="@layout/checkbox_left"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingStart="10dp">
+
+            <include
+                layout="@layout/checkbox_right"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/line_separator"
+        android:layout_below="@id/linearLayout_Search"
+        android:layout_alignStart="@id/activity_edit_box_sn"
+        android:layout_alignEnd="@id/activity_edit_box_sn"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable notifications (Once per day)"
+        android:layout_below="@id/line_separator"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@id/linearLayout_Search"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_separator"
+        android:layout_alignEnd="@id/line_separator"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>
