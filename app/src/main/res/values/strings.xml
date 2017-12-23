@@ -5,12 +5,25 @@
     <string name="toolbar_help">Help</string>
     <string name="toolbar_about">About</string>
     <string name="edit_box_hint">Search query term</string>
+
+    <!-- Check Box -->
     <string name="cb_Arts">Arts</string>
     <string name="cb_Business">Business</string>
     <string name="cb_Entrepreneurs">Entrepreneurs</string>
     <string name="cb_Politics">Politics</string>
     <string name="cb_Sports">Sports</string>
     <string name="cb_Travels">Travels</string>
+
+    <!-- Drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="dm_Category">Category</string>
+    <string name="dm_topStories">Top Stories</string>
+    <string name="dm_mostPopular">Most Popular</string>
+    <string name="dm_Arts">@string/cb_Arts</string>
+    <string name="dm_Business">@string/cb_Business</string>
+    <string name="dm_Entrepreneurs">@string/cb_Entrepreneurs</string>
+    <string name="dm_Politics">@string/cb_Politics</string>
+    <string name="dm_Sports">@string/cb_Sports</string>
+    <string name="dm_Travels">@string/cb_Travels</string>
 </resources>

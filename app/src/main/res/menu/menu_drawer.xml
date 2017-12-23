@@ -6,32 +6,32 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/activity_main_drawer_topstories"
-            android:title="Top stories" />
+            android:title="@string/dm_topStories" />
         <item
             android:id="@+id/activity_main_drawer_mostpopular"
-            android:title="Most popular"/>
+            android:title="@string/dm_mostPopular"/>
     </group>
-    <item android:title="Category">
+    <item android:title="@string/dm_Category">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/activity_main_drawer_arts"
-                    android:title="Arts" />
+                    android:title="@string/dm_Arts" />
                 <item
                     android:id="@+id/activity_main_drawer_business"
-                    android:title="Business" />
+                    android:title="@string/dm_Business" />
                 <item
                     android:id="@+id/activity_main_drawer_entrepreneurs"
-                    android:title="Entrepreneurs" />
+                    android:title="@string/dm_Entrepreneurs" />
                 <item
                     android:id="@+id/activity_main_drawer_politics"
-                    android:title="Politics" />
+                    android:title="@string/dm_Politics" />
                 <item
                     android:id="@+id/activity_main_drawer_sports"
-                    android:title="Sports" />
+                    android:title="@string/dm_Sports" />
                 <item
                     android:id="@+id/activity_main_drawer_travel"
-                    android:title="Travel" />
+                    android:title="@string/dm_Travels" />
             </group>
         </menu>
     </item>
