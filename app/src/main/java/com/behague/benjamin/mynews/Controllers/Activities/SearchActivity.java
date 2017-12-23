@@ -25,9 +25,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @BindView(R.id.et_end_date) EditText endDate;
 
-    private DatePickerDialog fromDatePickerDialog;
-    private DatePickerDialog toDatePickerDialog;
-
     private int mYear, mMonth, mDay;
 
     private SimpleDateFormat dateFormatter;
