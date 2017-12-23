@@ -2,4 +2,7 @@
 <resources>
     <dimen name="margin_end_editText">20dp</dimen>
     <dimen name="margin_start_editText">20dp</dimen>
+
+    <!-- Default NavigationView Header height -->
+    <dimen name="nav_header_height">200dp</dimen>
 </resources>
