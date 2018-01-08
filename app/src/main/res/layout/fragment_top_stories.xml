@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.behague.benjamin.mynews.Controllers.Fragments.TopStoriesFragment"
     android:gravity="center"
+    android:orientation="vertical"
     android:background="#EDD9CF">
 
     <TextView

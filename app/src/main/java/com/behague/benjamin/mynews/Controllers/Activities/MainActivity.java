@@ -1,5 +1,6 @@
 package com.behague.benjamin.mynews.Controllers.Activities;
 
+
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.configureDrawerLayout();
         this.configureViewPagerAndTabs();
         this.configureNavigationView();
+
+        viewPager = findViewById(R.id.activity_main_viewpager);
     }
 
     @Override
@@ -89,24 +93,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     @Override
-
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        // 4 - Handle Navigation Item Click
-        int id = item.getItemId();
+        int newItem = 0 , id = item.getItemId();
 
-        switch (id){
-            default:
-                break;
+        if (id == R.id.activity_main_drawer_topstories){
+            newItem = 0;
         }
+        else if (id == R.id.activity_main_drawer_mostpopular){
+            newItem = 1;
+        }
+
+        viewPager.setCurrentItem(newItem);
 
         this.drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
     }
 
-    @Override
 
+    @Override
     public void onBackPressed() {
         // 5 - Handle back click to close menu
         if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -117,12 +123,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void launchSearchActivity(){
-        Intent myIntent = new Intent(MainActivity.this, SearchActivity.class);
-        this.startActivity(myIntent);
+        Intent mSearchIntent = new Intent(MainActivity.this, SearchActivity.class);
+        this.startActivity(mSearchIntent);
     }
 
     private void launchNotifsActivity(){
-        Intent myIntent = new Intent(MainActivity.this, NotificationActivity.class);
-        this.startActivity(myIntent);
+        Intent mNotifsIntent = new Intent(MainActivity.this, NotificationActivity.class);
+        this.startActivity(mNotifsIntent);
     }
 }
