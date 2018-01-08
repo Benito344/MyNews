@@ -18,7 +18,7 @@ public class Article {
     }
 
     public String getSection() {
-        return this.section;
+        return section;
     }
 
     public void setTitle(String title) {
