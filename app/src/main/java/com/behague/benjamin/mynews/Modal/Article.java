@@ -1,16 +1,18 @@
 package com.behague.benjamin.mynews.Modal;
 
+import java.io.Serializable;
+
 /**
  * Created by Benjamin BEHAGUE on 08/01/2018.
  */
 
-public class Article {
+public class Article implements Serializable {
 
     private String section;
     private String title;
     private String abstact;
     private String articleUrl;
-    private String published_date;
+    private String publishedDate;
     private String imageUrl;
 
     public void setSection (String section){
@@ -45,12 +47,12 @@ public class Article {
         return articleUrl;
     }
 
-    public void setPublished_date(String published_date) {
-        this.published_date = published_date;
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
-    public String getPublished_date() {
-        return published_date;
+    public String getPublishedDate() {
+        return publishedDate;
     }
 
     public void setImageUrl(String imageUrl) {
