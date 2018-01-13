@@ -15,7 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.behague.benjamin.mynews.Adapter.PageAdapter;
+import com.behague.benjamin.mynews.Modal.Article;
+import com.behague.benjamin.mynews.Modal.ArticleAdaptaterMost;
+import com.behague.benjamin.mynews.Modal.ArticleAdaptaterTop;
+import com.behague.benjamin.mynews.Modal.mAsyncTask;
 import com.behague.benjamin.mynews.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,6 +29,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ViewPager viewPager;
+
+    private final String TOP_URL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=";
+    private final String MOST_URL = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=";
+    private final String APIKEY_TOP = "f61e15b5379341758307c696363f35f9";
+    private final String APIKEY_MOST = "f61e15b5379341758307c696363f35f9";
+    private final String TOP = "TOP";
+    private final String MOST = "MOST";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.configureNavigationView();
 
         viewPager = findViewById(R.id.activity_main_viewpager);
+        String urlTop = TOP_URL + APIKEY_TOP;
+        String urlMost = MOST_URL + APIKEY_MOST;
+        new mAsyncTask(this).execute(urlTop,urlMost,TOP,MOST);
+
     }
 
     @Override
@@ -95,13 +112,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        int newItem = 0 , id = item.getItemId();
+        int newItem ;
+        int id = item.getItemId();
 
-        if (id == R.id.activity_main_drawer_topstories){
-            newItem = 0;
-        }
-        else if (id == R.id.activity_main_drawer_mostpopular){
-            newItem = 1;
+        switch (id){
+            case R.id.activity_main_drawer_topstories:
+                newItem = 0;
+                viewPager.setCurrentItem(newItem);
+                break;
+
+            case R.id.activity_main_drawer_mostpopular:
+                newItem = 1;
+                viewPager.setCurrentItem(newItem);
+                break;
+
+            default:
+                newItem = 0;
+                viewPager.setCurrentItem(newItem);
+                break;
         }
 
         viewPager.setCurrentItem(newItem);
@@ -130,5 +158,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void launchNotifsActivity(){
         Intent mNotifsIntent = new Intent(MainActivity.this, NotificationActivity.class);
         this.startActivity(mNotifsIntent);
+    }
+
+    public void getArticleList (ArrayList<Article> mListTop, ArrayList<Article> mListMost){
+                ArticleAdaptaterTop mAdapatTop = new ArticleAdaptaterTop();
+                mAdapatTop.update(mListTop);
+                mAdapatTop.notifyDataSetChanged();
+                if(mAdapatTop.getItemCount() > 0){
+                    ArticleAdaptaterMost mAdaptMost = new ArticleAdaptaterMost();
+                    mAdaptMost.update(mListMost);
+                    mAdaptMost.notifyDataSetChanged();
+                }
+
     }
 }

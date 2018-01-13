@@ -17,4 +17,8 @@
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/color_arrowActionBar</item>
     </style>
+
+    <!-- Color Recycler View -->
+    <color name="date">#999999</color>
+    <color name="title">#222222</color>
 </resources>

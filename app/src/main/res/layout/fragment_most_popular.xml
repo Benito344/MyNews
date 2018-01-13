@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.behague.benjamin.mynews.Controllers.Fragments.MostPopularFragment"
     android:gravity="center"
+    android:orientation="vertical"
     android:background="#EDD9CF">
 
     <TextView
@@ -18,5 +19,11 @@
         android:textColor="#fff"
         android:textAlignment="center"
         android:text="MOST POPULAR"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 
 </LinearLayout>
