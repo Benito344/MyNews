@@ -19,14 +19,9 @@ import java.util.ArrayList;
 
 public class mAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
-    private final String SECTION = "section";
-    private final String TITLE = "title";
-    private final String ABSTRACT = "abstract";
-    private final String ARTICLE_URL = "url";
-    private final String PUBLISHED_DATE = "published_date";
-    private final String IMAGE_URL = "url";
-    private String mStape;
+
     JSONObject jsonData;
+
     public static ArrayList <Article> articlesList_TOP = new ArrayList<> ();
     public static ArrayList <Article> articlesList_MOST = new ArrayList<> ();
 
@@ -39,35 +34,63 @@ public class mAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
     @Override
     protected JSONObject doInBackground (String... params){
+
+        final String SECTION = "section";
+        final String TITLE = "title";
+        final String ABSTRACT = "abstract";
+        final String ARTICLE_URL = "url";
+        final String PUBLISHED_DATE = "published_date";
+        final String IMAGE_URL = "url";
+        final String SUBSECTION = "subsection";
+        final String RESULTS = "results";
+        final String MULTIMEDIA = "multimedia";
+        final String MEDIA = "media";
+        final String MEDIA_METADATA = "media-metadata";
+        final String TOP = "TOP";
+
+        String urlImages;
+        String result;
+
+        int mStatut;
+
         InputStream inputStream;
+
         for(int j = 0 ; j < 2 ; j++) {
             try {
-
                 URL url = new URL(params[j]);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
                 connection.connect();
                 inputStream = connection.getInputStream();
-                int mStatut = connection.getResponseCode();
+                mStatut = connection.getResponseCode();
+
                 if (mStatut < 400) {
-                    String result = InputStreamToString(inputStream);
+                    result = InputStreamToString(inputStream);
                     JSONObject jsonObject = new JSONObject(result);
-                    JSONArray jsonArrayResults = jsonObject.getJSONArray("results");
+                    JSONArray jsonArrayResults = jsonObject.getJSONArray(RESULTS);
+
                     for (int i = 0; i < jsonArrayResults.length(); i++) {
                         JSONObject obj = jsonArrayResults.getJSONObject(i);
-                        //JSONArray jsonArrayMultimedia = obj.getJSONArray("multimedia");
                         Article article = new Article();
                         article.setTitle(obj.getString(TITLE));
                         article.setAbstact(obj.getString(ABSTRACT));
                         article.setSection(obj.getString(SECTION));
                         article.setArticleUrl(obj.getString(ARTICLE_URL));
                         article.setPublishedDate(obj.getString(PUBLISHED_DATE));
-                        if (params[j + 2] == "TOP") {
+
+                        if (params[j + 2].equals(TOP)) {
+                            article.setSubSection(obj.getString(SUBSECTION));
+                            JSONArray jsonArrayMultimedia = obj.getJSONArray(MULTIMEDIA);
+                            urlImages = jsonArrayMultimedia.getJSONObject(0).getString(IMAGE_URL);
+                            article.setImageUrl(urlImages);
                             articlesList_TOP.add(article);
-                        } else {
+                        }
+                        else {
+                            JSONArray jsonArrayMultimedia = obj.getJSONArray(MEDIA).getJSONObject(0).getJSONArray(MEDIA_METADATA);
+                            urlImages = jsonArrayMultimedia.getJSONObject(0).getString(IMAGE_URL);
+                            article.setImageUrl(urlImages);
                             articlesList_MOST.add(article);
                         }
-
                     }
                 }
             } catch (IOException e) {
@@ -77,7 +100,6 @@ public class mAsyncTask extends AsyncTask<String, Void, JSONObject> {
             }
         }
         return jsonData;
-
     }
 
 
